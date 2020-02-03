@@ -1,0 +1,27 @@
+{
+  "name": "koa-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/application.js",
+  "scripts": {
+    "test": "node ./demo/base.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lapsec/koa-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lapsec/koa-demo/issues"
+  },
+  "homepage": "https://github.com/Lapsec/koa-demo#readme",
+  "dependencies": {
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.0",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0"
+  }
+}
