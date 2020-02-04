@@ -21,7 +21,7 @@ class Application extends EventEmitter implements Application {
     };
   }
 
-  listen(...args: []) {
+  listen(...args: any) {
     const server = http.createServer(this.callback());
     return server.listen(...args);
   }

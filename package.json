@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/application.js",
   "scripts": {
-    "test": "node ./demo/base.js"
+    "test": "supervisor ./demo/base.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@types/node": "^13.7.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
-    "@typescript-eslint/parser": "^2.18.0"
+    "@typescript-eslint/parser": "^2.18.0",
+    "supervisor": "^0.12.0"
   }
 }
