@@ -12,11 +12,15 @@
 const Koa = require('../lib/application').default;
 const app = new Koa();
 
-app.use(async (req, res) => {
-  res.writeHead(200);
-  res.end('Hello world')
+app.use(async (ctx) => {
+  ctx.status = 200;
+  ctx.body = {
+    code: 1,
+    message: 'ok',
+    url: ctx.url
+  };
 });
 
-app.listen(3001, ()=> {
+app.listen(3001, () => {
   console.log('server start at 3001');
-})
+});

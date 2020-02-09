@@ -8,10 +8,11 @@
       // "lib": ["es2017"],
       "noImplicitAny": true,
       "moduleResolution": "node",
-      "sourceMap": false,
+      "sourceMap": true,
+      "allowJs": true,
       "outDir": "lib",
       "baseUrl": ".",
-      "watch": false ,
+      "watch": true ,
       "paths": {
           "*": [
               "node_modules/*",

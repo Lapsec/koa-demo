@@ -1,4 +1,5 @@
 const delegate = require('./utils/delegate');
+// import delegate from './utils/delegate';
 
 const proto = module.exports = {
   toJSON () {

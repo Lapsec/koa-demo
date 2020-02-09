@@ -4,7 +4,7 @@ const context = require('./context');
 const request = require('./request');
 const response = require('./response');
 interface Application {
-  callbackFn: (req: object, res: object) => {};
+  callbackFn: any;
   context: typeof context;
   request: typeof request;
   response: typeof response;
@@ -32,7 +32,9 @@ class Application extends EventEmitter implements Application {
   }
 
   handleRequest(ctx: any) {
-    const handleResponse = () => response(ctx);
+    const handleResponse = () => respond(ctx);
+    // callbackFn是个async函数，最后返回promise对象
+    return this.callbackFn(ctx).then(handleResponse);
   }
 
   createContext(req: any, res: any) {
@@ -42,7 +44,7 @@ class Application extends EventEmitter implements Application {
     ctx.req = ctx.request.req = req;
     ctx.res = ctx.response.res = res;
     ctx.app = ctx.request.app = ctx.response.app = this;
-    return this;
+    return ctx;
   }
 
   listen(...args: any) {

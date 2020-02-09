@@ -13,8 +13,8 @@ module.exports = Delegator;
  * @api public
  */
 
-function Delegator(proto: any, target: any) {
-  // if (!(this instanceof Delegator)) return new Delegator(proto, target);
+function Delegator(proto, target) {
+  if (!(this instanceof Delegator)) return new Delegator(proto, target);
   this.proto = proto;
   this.target = target;
   this.methods = [];
@@ -33,31 +33,31 @@ function Delegator(proto: any, target: any) {
  * @api public
  */
 
-// Delegator.auto = function(proto:any, targetProto:any, targetProp:any){
-//   var delegator = Delegator(proto, targetProp);
-//   var properties = Object.getOwnPropertyNames(targetProto);
-//   for (var i = 0; i < properties.length; i++) {
-//     var property = properties[i];
-//     var descriptor = Object.getOwnPropertyDescriptor(targetProto, property);
-//     if (descriptor.get) {
-//       delegator.getter(property);
-//     }
-//     if (descriptor.set) {
-//       delegator.setter(property);
-//     }
-//     if (descriptor.hasOwnProperty('value')) { // could be undefined but writable
-//       var value = descriptor.value;
-//       if (value instanceof Function) {
-//         delegator.method(property);
-//       } else {
-//         delegator.getter(property);
-//       }
-//       if (descriptor.writable) {
-//         delegator.setter(property);
-//       }
-//     }
-//   }
-// };
+Delegator.auto = function(proto, targetProto, targetProp){
+  var delegator = Delegator(proto, targetProp);
+  var properties = Object.getOwnPropertyNames(targetProto);
+  for (var i = 0; i < properties.length; i++) {
+    var property = properties[i];
+    var descriptor = Object.getOwnPropertyDescriptor(targetProto, property);
+    if (descriptor.get) {
+      delegator.getter(property);
+    }
+    if (descriptor.set) {
+      delegator.setter(property);
+    }
+    if (descriptor.hasOwnProperty('value')) { // could be undefined but writable
+      var value = descriptor.value;
+      if (value instanceof Function) {
+        delegator.method(property);
+      } else {
+        delegator.getter(property);
+      }
+      if (descriptor.writable) {
+        delegator.setter(property);
+      }
+    }
+  }
+};
 
 /**
  * Delegate method `name`.
@@ -67,7 +67,7 @@ function Delegator(proto: any, target: any) {
  * @api public
  */
 
-Delegator.prototype.method = function(name:any){
+Delegator.prototype.method = function(name){
   var proto = this.proto;
   var target = this.target;
   this.methods.push(name);
@@ -87,7 +87,7 @@ Delegator.prototype.method = function(name:any){
  * @api public
  */
 
-Delegator.prototype.access = function(name:any){
+Delegator.prototype.access = function(name){
   return this.getter(name).setter(name);
 };
 
@@ -99,7 +99,7 @@ Delegator.prototype.access = function(name:any){
  * @api public
  */
 
-Delegator.prototype.getter = function(name:any){
+Delegator.prototype.getter = function(name){
   var proto = this.proto;
   var target = this.target;
   this.getters.push(name);
@@ -119,12 +119,12 @@ Delegator.prototype.getter = function(name:any){
  * @api public
  */
 
-Delegator.prototype.setter = function(name:any){
+Delegator.prototype.setter = function(name){
   var proto = this.proto;
   var target = this.target;
   this.setters.push(name);
 
-  proto.__defineSetter__(name, function(val:any){
+  proto.__defineSetter__(name, function(val){
     return this[target][name] = val;
   });
 
@@ -139,12 +139,12 @@ Delegator.prototype.setter = function(name:any){
  * @api public
  */
 
-Delegator.prototype.fluent = function (name:any) {
+Delegator.prototype.fluent = function (name) {
   var proto = this.proto;
   var target = this.target;
   this.fluents.push(name);
 
-  proto[name] = function(val: any){
+  proto[name] = function(val){
     if ('undefined' != typeof val) {
       this[target][name] = val;
       return this;
