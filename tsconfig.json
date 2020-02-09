@@ -15,11 +15,15 @@
       "paths": {
           "*": [
               "node_modules/*",
-              "src/*"
           ]
       }
   },
   "include": [
-      "src/**/*"
-  ]
+      "src/*",
+      "src/utils"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+  ],
 }
