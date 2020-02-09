@@ -1,6 +1,6 @@
 {
-  "name": "koa-demo",
-  "version": "1.0.0",
+  "name": "koa-lapsec",
+  "version": "0.0.1",
   "description": "",
   "main": "src/application.js",
   "scripts": {
@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/Lapsec/koa-demo#readme",
   "dependencies": {
-    "typescript": "^3.7.5"
   },
   "devDependencies": {
+    "typescript": "^3.7.5",
     "@types/node": "^13.7.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",

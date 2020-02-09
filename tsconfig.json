@@ -11,7 +11,7 @@
       "sourceMap": false,
       "outDir": "lib",
       "baseUrl": ".",
-      "watch":true ,
+      "watch": false ,
       "paths": {
           "*": [
               "node_modules/*",
@@ -19,11 +19,10 @@
       }
   },
   "include": [
-      "src/*",
-      "src/utils"
+    "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-  ],
+      "node_modules",
+      "**/*.spec.ts"
+  ]
 }
