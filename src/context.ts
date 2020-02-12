@@ -12,6 +12,24 @@ const proto = module.exports = {
       res: '<original node res>',
       socket: '<original node socket>'
     }
+  },
+
+  // context自身的方法
+  onerror(err:any) {
+    // 中间件报错捕获
+    const { res } = this;
+
+    if ('ENOENT' == err.code) {
+      err.status = 404;
+    } else {
+      err.status = 500;
+    }
+    this.status = err.status;
+
+    // 触发error事件
+    this.app.emit('error', err, this);
+
+    res.end(err.message || 'Internal error');
   }
 }
 

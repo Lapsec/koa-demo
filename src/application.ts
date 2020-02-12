@@ -68,10 +68,11 @@ class Application extends EventEmitter implements Application {
     return handleRequest;
   }
 
-  handleRequest(ctx: object, fnMiddleware: any) {
+  handleRequest(ctx: any, fnMiddleware: any) {
     const handleResponse = () => respond(ctx);
+    const onerror = (err: any) => ctx.onerror(err);
     // 执行中间件并把最后的结果交给respond
-    return fnMiddleware(ctx).then(handleResponse);
+    return fnMiddleware(ctx).then(handleResponse).catch(onerror);
   }
 
   createContext(req: any, res: any) {

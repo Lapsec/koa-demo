@@ -6,12 +6,12 @@
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
       // "lib": ["es2017"],
-      "noImplicitAny": true,
       "moduleResolution": "node",
       "sourceMap": true,
       "allowJs": true,
       "outDir": "lib",
       "baseUrl": ".",
+      "noImplicitAny": false,
       "watch": true ,
       "paths": {
           "*": [
