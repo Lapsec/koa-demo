@@ -3,6 +3,7 @@ import http from 'http';
 const context = require('./context');
 const request = require('./request');
 const response = require('./response');
+const compose  = require('./utils/compose');
 interface Application {
   callbackFn: any;
   context: typeof context;
@@ -25,34 +26,34 @@ class Application extends EventEmitter implements Application {
     this.middleware.push(fn); // 存储中间件
   }
 
-  compose (middleware: any) {
-    if (!Array.isArray(middleware)) throw new TypeError('Middleware stack must be an array!')
-    for (const fn of middleware) {
-      if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
-    }
+  // compose (middleware: any) {
+  //   if (!Array.isArray(middleware)) throw new TypeError('Middleware stack must be an array!')
+  //   for (const fn of middleware) {
+  //     if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
+  //   }
   
-    return function (context: any, next: any) {
-      let index = -1
-      return dispatch(0)
-      function dispatch (i:number) {
-        if (i <= index) return Promise.reject(new Error('next() called multiple times'))
-        index = i
-        let fn = middleware[i]
-        if (i === middleware.length) fn = next
-        if (!fn) return Promise.resolve()
-        try {
-          return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
-        } catch (err) {
-          return Promise.reject(err)
-        }
-      }
-    }
-  }
+  //   return function (context: any, next: any) {
+  //     let index = -1
+  //     return dispatch(0)
+  //     function dispatch (i:number) {
+  //       if (i <= index) return Promise.reject(new Error('next() called multiple times'))
+  //       index = i
+  //       let fn = middleware[i]
+  //       if (i === middleware.length) fn = next
+  //       if (!fn) return Promise.resolve()
+  //       try {
+  //         return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
+  //       } catch (err) {
+  //         return Promise.reject(err)
+  //       }
+  //     }
+  //   }
+  // }
 
 
   callback() {
     // 合成所有中间件
-    const fn = this.compose(this.middleware);
+    const fn = compose(this.middleware);
     const handleRequest = (req:object, res: object) => {
       const ctx = this.createContext(req, res);
       return this.handleRequest(ctx, fn)

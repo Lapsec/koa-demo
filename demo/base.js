@@ -5,6 +5,7 @@ app.use(async (ctx, next) => {
   console.log('1-start');
   await next();
   console.log('1-end');
+  console.log('1-fuck');
 })
 
 app.use(async (ctx) => {
