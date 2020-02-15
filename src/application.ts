@@ -31,14 +31,7 @@ class Application extends EventEmitter implements Application {
       if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
     }
   
-    /**
-     * @param {Object} context
-     * @return {Promise}
-     * @api public
-     */
-  
     return function (context: any, next: any) {
-      // last called middleware #
       let index = -1
       return dispatch(0)
       function dispatch (i:number) {
@@ -56,10 +49,10 @@ class Application extends EventEmitter implements Application {
     }
   }
 
+
   callback() {
     // 合成所有中间件
     const fn = this.compose(this.middleware);
-
     const handleRequest = (req:object, res: object) => {
       const ctx = this.createContext(req, res);
       return this.handleRequest(ctx, fn)

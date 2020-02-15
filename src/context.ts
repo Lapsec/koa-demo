@@ -14,7 +14,6 @@ const proto = module.exports = {
     }
   },
 
-  // context自身的方法
   onerror(err:any) {
     // 中间件报错捕获
     const { res } = this;

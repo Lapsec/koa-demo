@@ -1,12 +1,6 @@
 const Koa = require('../lib/application').default;
 const app = new Koa();
 
-// app.use(async (ctx) => {
-//   // 报错可以捕获
-//   a.b.c = 1;
-//   ctx.body = 'hello tc';
-// });
-
 app.use(async (ctx, next) => {
   console.log('1-start');
   await next();
