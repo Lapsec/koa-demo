@@ -18,7 +18,7 @@ const compose = (middleware) => {
       }
     }
 
-    return dispatch(1);
+    return dispatch(0);
   }
 }
 
