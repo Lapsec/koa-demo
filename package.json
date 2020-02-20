@@ -1,6 +1,6 @@
 {
   "name": "koa-lapsec",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "src/application.js",
   "scripts": {
