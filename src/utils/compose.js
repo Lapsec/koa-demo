@@ -9,7 +9,7 @@ const compose = (middleware) => {
     function dispatch(i) {
       if(i <= index) return Promise.reject(new Error('next() called multiple times'));
       let fn = middleware[i];
-      if(i === middleware.length) fn = next();
+      if(i === middleware.length) fn = next;
       if(!fn) return Promise.resolve();
       try {
         return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
