@@ -77,4 +77,5 @@ function respond(ctx: any) {
   }
 }
 
-export default Application;
+// export default Application;
+module.exports = Application;

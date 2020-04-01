@@ -1,4 +1,4 @@
-const Koa = require('../lib/application').default;
+const Koa = require('../lib/application');
 const app = new Koa();
 
 // app.use(async (ctx, next) => {
