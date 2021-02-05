@@ -18,6 +18,21 @@
   },
   "homepage": "https://github.com/Lapsec/koa-demo#readme",
   "dependencies": {
+    "accepts": "^1.3.7",
+    "cache-content-type": "^1.0.1",
+    "content-disposition": "^0.5.3",
+    "content-type": "^1.0.4",
+    "cookies": "^0.8.0",
+    "encodeurl": "^1.0.2",
+    "fresh": "^0.5.2",
+    "http-assert": "^1.4.1",
+    "http-errors": "^1.8.0",
+    "on-finished": "^2.3.0",
+    "only": "0.0.2",
+    "parseurl": "^1.3.3",
+    "statues": "^1.0.0-alpha1",
+    "statuses": "^2.0.1",
+    "vary": "^1.1.2"
   },
   "devDependencies": {
     "typescript": "^3.7.5",

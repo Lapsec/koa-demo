@@ -1,4 +1,4 @@
-const Koa = require('../lib/application');
+const Koa = require('../lib_s/application');
 const app = new Koa();
 
 // app.use(async (ctx, next) => {
@@ -9,6 +9,7 @@ const app = new Koa();
 
 app.use(async (ctx) => {
   console.log('2-start');
+  console.log('ctx', ctx);
   ctx.body = 'hello tc';
   console.log('2-end');
 });

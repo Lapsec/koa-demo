@@ -1,4 +1,5 @@
-const compose = (middleware) => {
+
+const compose = middleware => {
   if(!Array.isArray(middleware)) throw new TypeError('Middleware stack must be an array');
   for(const fn of middleware) {
     if(typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions');
@@ -8,6 +9,7 @@ const compose = (middleware) => {
     let index = -1;
     function dispatch(i) {
       if(i <= index) return Promise.reject(new Error('next() called multiple times'));
+      index = i;
       let fn = middleware[i];
       if(i === middleware.length) fn = next;
       if(!fn) return Promise.resolve();
