@@ -92,7 +92,7 @@ function respond(ctx) {
   let body = ctx.body;
   const code = ctx.status;
 
-  if(status.empty[code]) {
+  if(statuses.empty[code]) {
     ctx.body = null;
     return res.end();
   }

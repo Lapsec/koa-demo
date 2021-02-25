@@ -88,7 +88,7 @@ const proto = module.exports = {
   }
 }
 
-delegate(proto, 'resopnse')
+delegate(proto, 'response')
   .method('attachment')
   .method('redirect')
   .method('remove')

@@ -9,7 +9,6 @@ const app = new Koa();
 
 app.use(async (ctx) => {
   console.log('2-start');
-  console.log('ctx', ctx);
   ctx.body = 'hello tc';
   console.log('2-end');
 });
