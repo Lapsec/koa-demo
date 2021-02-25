@@ -1,8 +1,8 @@
 {
   "name": "koa-lapsec",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "",
-  "main": "lib/application.js",
+  "main": "lib_s/application.js",
   "scripts": {
     "dev": "supervisor ./demo/base.js",
     "build": "rm -r ./lib && tsc"
