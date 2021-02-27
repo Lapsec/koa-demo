@@ -3,7 +3,6 @@ const httpAssert = require('http-assert');
 const createError = require('http-errors');
 const util = require('util');
 const Cookie = require('cookies');
-const { createBuilderStatusReporter } = require('typescript');
 const COOKIES = Symbol('context#cookies');
 
 const proto = module.exports = {

@@ -5,7 +5,6 @@ const vary = require('vary');
 const only = require('only');
 const encodeUrl = require('encodeurl');
 const contentDisposition = require('content-disposition');
-const { isTypeAliasDeclaration } = require("typescript");
 
 module.exports = {
 
